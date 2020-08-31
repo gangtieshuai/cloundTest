@@ -21,6 +21,12 @@ const routes: Routes = [
           title:'Games'
         },
         component: GamesComponent,
+        children: [
+          {
+            path: '/:id',
+            component: DetailComponent,
+          },
+        ]
       },
       {
         path: 'functions',
@@ -44,10 +50,7 @@ const routes: Routes = [
           title:'Profile'
         }
       },
-      {
-        path: 'detail/:id',
-        component: DetailComponent,
-      },
+   
       {
         path: '**',           // 找不到页面
         redirectTo: 'games',
