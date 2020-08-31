@@ -92,6 +92,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "test"
+    }
+  },
+  "defaultProject": "test",
+  "cli": {
+    "analytics": "13798924-dded-4040-a2a1-89205da3f051"
+  }
 }
