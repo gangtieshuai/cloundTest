@@ -17,6 +17,9 @@ export class CommonService {
     let title;
     this.isHome = true;
     switch (url) {
+      case '/':
+        title = 'Games';
+        break;
       case '/index/games':
         title = 'Games';
         break;
