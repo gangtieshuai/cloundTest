@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Document</title>
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script>
+    //   var Parse = require('parse');
+        Parse.initialize("Y7LfslaNFxyOwxiLC4NTYUgaPYFDhMD5res9yFAX","JjK1Kkfmzekw64W5cOXp7ZP6bdpwaQnXA7gtL9wb"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+        Parse.serverURL = "https://parseapi.back4app.com/";
+        function test(){
+            var user = new Parse.User();
+        user.save({
+            username: 'test1',
+            email: 's.st@foxmail.com',
+            password: 'pwd'
+        }).then(function (response) {
+            alert('New object create with success! ObjectId: ' + response.id + ', ' + user.get('username'));
+        }).catch(function (error) {
+            alert('Error: ' + error.message);
+        });
+        }
+      
+    </script>
+</head>
+
+<body>
+ <button onclick="test()">
+     点七五
+ </button>
+</body>
+
+</html>

@@ -1,10 +1,17 @@
 
 <div class="box">
     <header>
-        <img [hidden]="service.isHome" class="left" src="../../assets/left.png" alt="" srcset="">
+        <img [hidden]="service.isHome" (click)="back()"  class="left" src="../../assets/left.png" alt="" srcset="">
         {{service.customBreadcrumb}}</header>
     <div class="roll" (scroll)="tmsScroll($event)">
         <router-outlet></router-outlet>
+        <div  [hidden]="service.isLoading?false:true" class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+       </div>
     </div>
     <footer>
         <div routerLink="./games" routerLinkActive="backColor">Games</div>

@@ -11,14 +11,17 @@ import { CommunicateService } from 'src/app/service/communicate.service';
 })
 export class DetailComponent implements OnInit, OnDestroy {
     objSub: any;
-    constructor (
+    constructor(
         private route: ActivatedRoute,
         public common: CommonService,
         public communicateService: CommunicateService,
     ) {
-    this.objSub = this.communicateService.eventbus.subscribe((event) => {
-        console.log(event);
-   });
+        this.objSub = this.communicateService.eventbus.subscribe((event) => {
+            if (this.isHttp) {
+                this.page++;
+                this.getData();
+            }
+        });
     }
     users = [
         {},
@@ -34,11 +37,39 @@ export class DetailComponent implements OnInit, OnDestroy {
         {},
         {},
     ];
+    dataList = [];
+    page = 1;
+    isHttp = true;
+    dataobj: Object;
     ngOnInit(): void {
+        this.getData();
         console.log(this.route.params['value']['id']);
+        this.dataobj = this.route.snapshot.queryParams
     }
     ngOnDestroy() {
         this.objSub.unsubscribe();
+    }
+    getData() {
+        this.common.httpClient(
+            {
+                key: 'Comments',
+                page: 1,
+                size: 1
+            }
+        ).subscribe(res => {
+            console.log(res);
+            if (res.length === 0) {
+                this.isHttp = false;
+            }
+            res.forEach(i => {
+                this.dataList.push({
+                    text: i.name,
+                    index: 0,
+                    img: i.image,
+                    price: i.price.toFixed(2)
+                })
+            });
+        })
     }
 
 }

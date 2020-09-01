@@ -9,18 +9,16 @@ import { CommunicateService } from './service/communicate.service';
 })
 export class AppComponent implements OnInit {
     title = 'test';
-    constructor (
+    constructor(
         private router: Router,
         private common: CommonService,
-        private communicate: CommunicateService
+        private route: ActivatedRoute,
     ) {
     }
     ngOnInit() {
+     
         this.router.events.subscribe(event => {
             if (event instanceof ResolveEnd) {
-                console.log(event.url);
-                // this.common
-               
                 this.common.setcustomBreadcrumb(event.url);
             }
         })

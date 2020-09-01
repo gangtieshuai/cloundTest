@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from '../service/common.service';
 import { CommunicateService } from '../service/communicate.service';
@@ -11,6 +11,8 @@ export class LayoutComponent implements OnInit {
     constructor (
         private router: Router,
         public service: CommonService,
+        private cdref: ChangeDetectorRef,
+
 
     ) {
     }
@@ -30,4 +32,10 @@ export class LayoutComponent implements OnInit {
             this.service.sendScroll();
         }
     }
+    back(){
+        window.history.go(-1);
+    }
+    ngAfterContentChecked() {
+        this.cdref.detectChanges();
+         }
 }
