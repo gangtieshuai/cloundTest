@@ -14,6 +14,7 @@ import { FunctionsComponent } from './layout/functions/functions.component';
 import { BandCardComponent } from './layout/band-card/band-card.component';
 import { ProfileComponent } from './layout/profile/profile.component';
 import { CardComponent } from './componet/card/card.component';
+import { CommunicateService } from './service/communicate.service';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,7 @@ import { CardComponent } from './componet/card/card.component';
     exports: [
         CardComponent
     ],
-    providers: [],
+    providers: [CommunicateService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,9 @@
 
 <div class="box">
-    <header>{{service.customBreadcrumb}}</header>
-    <div class="roll">
+    <header>
+        <img [hidden]="service.isHome" class="left" src="../../assets/left.png" alt="" srcset="">
+        {{service.customBreadcrumb}}</header>
+    <div class="roll" (scroll)="tmsScroll($event)">
         <router-outlet></router-outlet>
     </div>
     <footer>

@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommunicateService } from 'src/app/service/communicate.service';
 
 @Component({
     selector: 'app-games',
     templateUrl: './games.component.html',
     styleUrls: ['./games.component.less']
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent implements OnInit, OnDestroy {
+    objSub: any;
+    constructor (private router: Router, private communicateService: CommunicateService) {
+        this.objSub = this.communicateService.eventbus.subscribe((event) => {
+             console.log(event);
+        });
 
-    constructor(private router: Router) { }
+    }
     dataList = [
         {
             text: 'The Legend of Zeida',
@@ -43,6 +49,9 @@ export class GamesComponent implements OnInit {
         }
     ];
     ngOnInit(): void {
+    }
+    ngOnDestroy() {
+        this.objSub.unsubscribe();
     }
     clickEventHandler(event) {
         console.log(event);

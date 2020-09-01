@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommunicateService } from './communicate.service';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +11,7 @@ export class CommonService {
     isHome: boolean;
     constructor(
         private route: ActivatedRoute,
+        private communicateService: CommunicateService
     ) { }
     getHeroes(id): any {
        console.log(id);
@@ -47,5 +49,8 @@ export class CommonService {
         }
         return title;
 
+    }
+    sendScroll(){
+        this.communicateService.eventbus.emit({msg: this.customBreadcrumb});
     }
 }
