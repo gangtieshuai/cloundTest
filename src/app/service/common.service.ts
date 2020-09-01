@@ -20,6 +20,9 @@ export class CommonService {
       case '/':
         title = 'Games';
         break;
+       case '/index':
+          title = 'Games';
+          break;
       case '/index/games':
         title = 'Games';
         break;

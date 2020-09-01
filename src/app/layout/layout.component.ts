@@ -17,8 +17,7 @@ export class LayoutComponent implements OnInit {
  
   }
   tabBarTabOnPress(pressParam: any) {
-    const link = pressParam.index === 0 ? '/index/list' : '/index/home';
-    this.router.navigate([link]);
+    this.router.navigate(['link']);
   }
 
 }

@@ -21,12 +21,10 @@ const routes: Routes = [
           title:'Games'
         },
         component: GamesComponent,
-        children: [
-          {
-            path: '/:id',
-            component: DetailComponent,
-          },
-        ]
+      },
+      {
+        path: 'detail',
+        component: DetailComponent,
       },
       {
         path: 'functions',

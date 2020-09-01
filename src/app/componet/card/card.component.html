@@ -1,0 +1,14 @@
+<div  class="divBlock" *ngFor="let i of dataList" (click)="divClick(i)">
+    <div  class="divSon">
+      <img  [src]="i.img"  alt="">
+    </div>
+    <div class="textP">
+       <h3>
+        {{i.text}}
+       </h3>
+       <h5>
+        $&nbsp;{{i.price}}
+       </h5>
+      </div>
+  </div>
+  

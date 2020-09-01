@@ -13,6 +13,7 @@ import { GamesComponent } from './layout/games/games.component';
 import { FunctionsComponent } from './layout/functions/functions.component';
 import { BandCardComponent } from './layout/band-card/band-card.component';
 import { ProfileComponent } from './layout/profile/profile.component';
+import { CardComponent } from './componet/card/card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './layout/profile/profile.component';
     GamesComponent,
     FunctionsComponent,
     BandCardComponent,
-    ProfileComponent
+    ProfileComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,9 @@ import { ProfileComponent } from './layout/profile/profile.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+  ],
+  exports:[
+    CardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
