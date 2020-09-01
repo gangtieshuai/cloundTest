@@ -16,28 +16,28 @@ import { ProfileComponent } from './layout/profile/profile.component';
 import { CardComponent } from './componet/card/card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    DetailComponent,
-    HomeComponent,
-    GamesComponent,
-    FunctionsComponent,
-    BandCardComponent,
-    ProfileComponent,
-    CardComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-  ],
-  exports:[
-    CardComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        DetailComponent,
+        HomeComponent,
+        GamesComponent,
+        FunctionsComponent,
+        BandCardComponent,
+        ProfileComponent,
+        CardComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+    ],
+    exports: [
+        CardComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
