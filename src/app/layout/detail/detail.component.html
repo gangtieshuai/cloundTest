@@ -1,16 +1,20 @@
 <div>
     <div class="top"  >
-        <img  src="../../../assets/cola.jpg" alt="" srcset="">
+        <img  [src]="dataobj['img']" alt="" srcset="">
     </div>
     <div class="Component">Component</div>
     <div class="user" *ngFor="let i of users">
         <div class="avater">
-            <img src="../../../assets//cola.jpg" alt="" srcset="">
+            <img [src]="i.avatar" alt="" srcset="">
         </div>
 
         <div class="describtion" >
-            <h3>这是标题</h3>
-            <p>这是描述大师傅士大夫弗拉斯卡的那棵树的那款手机撒娇的你那是空间的那可就是你的卡</p>
+            <h3>{{i.name}}</h3>
+            <p>{{i.comment}}</p>
         </div>
     </div>
+  <div [hidden]="isnullData" style="text-align: center;color: gainsboro;">
+      <img src="../../../assets/null.png" alt="" srcset="">
+      <p>暂无数据</p>
+  </div>
 </div>

@@ -1,7 +1,11 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Router,Params, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommunicateService } from 'src/app/service/communicate.service';
 import { CommonService } from 'src/app/service/common.service';
+/* gangtieshuai
+   郭德纲
+*  游戏列表
+*/
 
 @Component({
     selector: 'app-games',
@@ -11,8 +15,7 @@ import { CommonService } from 'src/app/service/common.service';
 export class GamesComponent implements OnInit, OnDestroy {
     objSub: any;
     constructor(private router: Router,
-        private route: ActivatedRoute,
-         private communicateService: CommunicateService, private common: CommonService) {
+                private communicateService: CommunicateService, private common: CommonService) {
         this.objSub = this.communicateService.eventbus.subscribe((event) => {
             if (this.isHttp) {
                 this.page++;
@@ -25,23 +28,18 @@ export class GamesComponent implements OnInit, OnDestroy {
     isHttp = true;
     ngOnInit(): void {
         this.getData();
-        console.log(　this.route.snapshot.data.title);
-        
     }
     ngOnDestroy() {
+        // 取消订阅，释放内存
         this.objSub.unsubscribe();
     }
 
     clickEventHandler(event) {
-        console.log(event);
-        sessionStorage.setItem('s',event)
-        this.router.navigate(['/index/detail/' + event.index],{
-            queryParams: event
+        this.common.setDetailValue(event).then(() => {
+            this.router.navigate(['/index/detail/' + event.index]);
         });
     }
     getData() {
-        console.log(this.page);
-
         this.common.httpClient(
             {
                 key: 'Game',
@@ -55,11 +53,11 @@ export class GamesComponent implements OnInit, OnDestroy {
             res.forEach(i => {
                 this.dataList.push({
                     text: i.name,
-                    index: 0,
+                    index: i.gameId,
                     img: i.image,
                     price: i.price.toFixed(2)
-                })
+                });
             });
-        })
+        });
     }
 }

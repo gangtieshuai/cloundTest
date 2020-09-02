@@ -1,29 +1,26 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from '../service/common.service';
-import { CommunicateService } from '../service/communicate.service';
+/* gangtieshuai
+   郭德纲
+*  layout布局
+*/
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.less']
 })
 export class LayoutComponent implements OnInit {
-    constructor (
-        private router: Router,
+    constructor(
         public service: CommonService,
         private cdref: ChangeDetectorRef,
-
-
     ) {
     }
     headTitle: string;
     ngOnInit(): void {
 
     }
-    tabBarTabOnPress(pressParam: any) {
-        this.router.navigate(['link']);
-    }
-
+    /// 滚动条
     tmsScroll(event) {
         const scrollHeight = event.target.scrollHeight;
         const scrollTop = event.target.scrollTop;
@@ -35,6 +32,7 @@ export class LayoutComponent implements OnInit {
     back(){
         window.history.go(-1);
     }
+    // tslint:disable-next-line: use-lifecycle-interface 触发检测机制
     ngAfterContentChecked() {
         this.cdref.detectChanges();
          }

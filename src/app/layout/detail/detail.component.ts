@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, ActivatedRouteSnapshot } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { CommonService } from 'src/app/service/common.service';
 import { CommunicateService } from 'src/app/service/communicate.service';
+/* gangtieshuai
+   郭德纲
+*  游戏详情
+*/
 @Component({
     selector: 'app-detail',
     templateUrl: './detail.component.html',
@@ -17,34 +19,25 @@ export class DetailComponent implements OnInit, OnDestroy {
         public communicateService: CommunicateService,
     ) {
         this.objSub = this.communicateService.eventbus.subscribe((event) => {
+            console.log(event);
             if (this.isHttp) {
                 this.page++;
                 this.getData();
             }
         });
     }
-    users = [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-    ];
+    users = [];
     dataList = [];
     page = 1;
     isHttp = true;
+    gameId: number;
+    isnullData = true;
+    // tslint:disable-next-line: ban-types
     dataobj: Object;
     ngOnInit(): void {
+        this.gameId = this.route.params['value']['id'];
+        this.dataobj = this.common.getDetailValue(this.gameId);
         this.getData();
-        console.log(this.route.params['value']['id']);
-        this.dataobj = this.route.snapshot.queryParams
     }
     ngOnDestroy() {
         this.objSub.unsubscribe();
@@ -53,23 +46,20 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.common.httpClient(
             {
                 key: 'Comments',
-                page: 1,
-                size: 1
+                page: this.page,
+                size: 6,
+                equal: { key: 'gameId', value: Number(this.gameId) }
             }
         ).subscribe(res => {
             console.log(res);
             if (res.length === 0) {
                 this.isHttp = false;
+                this.isnullData = this.page === 1 ? false : true;
             }
             res.forEach(i => {
-                this.dataList.push({
-                    text: i.name,
-                    index: 0,
-                    img: i.image,
-                    price: i.price.toFixed(2)
-                })
+                this.users.push(i);
             });
-        })
+        });
     }
 
 }
