@@ -5,6 +5,7 @@
         "ng": "ng",
         "start": "ng serve",
         "starts1": "ng serve",
+        "starts2": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
