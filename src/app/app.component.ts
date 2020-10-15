@@ -8,6 +8,7 @@ import { CommonService } from './service/common.service';
 })
 export class AppComponent implements OnInit {
    title = 'cloudTest-Demo';
+   title1 = 'cloudTest-Demo1';
     constructor(
         private router: Router,
         private common: CommonService,
