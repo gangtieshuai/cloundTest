@@ -7,7 +7,7 @@ import { CommonService } from './service/common.service';
     styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-    title = 'cloudTest-title';
+   title = 'cloudTest-Demo';
     constructor(
         private router: Router,
         private common: CommonService,
